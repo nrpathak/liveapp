@@ -1,0 +1,27 @@
+<h1 class="main-page" align="center"> Administrator Homepage</h1>
+<table class="show_all_table">
+  <tr>
+    <th class="show_all_table_th">
+    Options
+    </th>
+  </tr>
+  <tr>
+    <td class="show_all_table_td">
+      <ul class="list-layout">
+      <strong>Reports:</strong>
+      <li><%=link_to 'View Post Activity',:action => 'view_post_activity' %></li>
+      <li><%=link_to 'View All Users',:action => 'show_all_users' %></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="show_all_table_td">
+       <ul class="list-layout">
+       <strong>Manage:</strong>
+       <li><%=link_to 'Users',:action => 'manage_users' %></li>
+       <li><%=link_to 'Posts',:action => 'show_all_posts' %></li>
+       </ul>
+    </td>
+  </tr>
+</table>
+<h4 class="main-page"><%=link_to 'Add New Admin',:action => 'new' %></h4>

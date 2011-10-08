@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Question App</title>
+
+<h1>Live Question Application</h1>
+</head>
+<body>
+ <% if session[:user_id]==nil %>
+    <div class="login">
+    <%= link_to "Home", :controller=>'posts',:action => "index" %> |
+    Do you have an account? <%= link_to "Sign Up!", :controller => 'users',:action => 'new' %> |
+
+    <%= link_to 'login', :controller => 'users',:action => 'login' %></div>
+  <% else %>
+    <div class="login">
+      <% if session[:admin] == "true" %>
+        <%= link_to "Home", :controller => 'users',:action => "list" %> |
+        <%= link_to "Live App Home", :controller => 'posts',:action => "index" %> |
+      <% else %>
+        <%= link_to "Home", :controller => 'posts',:action => "index" %> |
+      <% end %>
+      <%= link_to "Edit Profile", :controller=>'users',:action => 'edit', :id => session[:user_id] %> |
+      User: <b><%= get_user_name(session[:user_id]) %></b>|<%= link_to "logout", :controller => 'users',:action => 'logout' %>
+    </div>
+  <% end %>
+  <br /><br />
+  <div class="application_title">
+  </div>
+
+
+  <%= yield %>
+</body>
+</html>

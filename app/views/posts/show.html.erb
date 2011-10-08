@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>Post Title:</b>
+  <%= @post.post_title %>
+</p>
+
+<p>
+  <b>Post desc:</b>
+  <%= @post.post_desc %>
+</p>
+
+<p>
+  <b>Votes count:</b>
+  <%= @post.votes_count %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <%= @post.creator_id %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @post.weight %>
+</p>
+
+<p>
+  <b>Reply:</b>
+  <%= @post.reply_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

@@ -1,0 +1,123 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.theme.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#efffff;
+}
+
+table.post_table{
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+    min-height:50px;
+    //background-color:#eeff00;
+    background-color:#fff;
+    border: none;
+    cell-spacing:collapse;
+}
+
+table.login_table{
+    margin-left:auto;
+    margin-right:auto;
+    width:30%;
+    min-height:50px;
+    //background-color:#eeff00;
+    background-color:#fff;
+    border: none;
+    cell-spacing:collapse;
+}
+
+table.login_table td{
+text-align:center;
+}
+
+.post_element,
+.login_element{
+   background-color:#eeffcc;
+   border:solid 1px #cfcfcf;
+}
+
+.vote_elt{
+   background-color:#99ee99;
+   border:solid 1px #006600;
+   width: 10%;
+   text-align: center;
+}
+.Post{
+   background-color:#eeffcc;
+   border:solid 1px #006600;
+   colspan: 2;
+   text-align: center;
+}
+
+//table.post_table
+th.post_table_th{
+    background-color: #006600;
+    color: white;
+    font-family:calibri,corbel;
+    font-weight:bold;
+    font-size:24px;
+    height:50px;
+    cell-padding: 40px;
+}
+
+th.login_table_th{
+    background-color: #006600;
+    color: white;
+    font-family:calibri,corbel;
+    font-weight:bold;
+    font-size:24px;
+    height:50px;
+    cell-padding: 40px;
+}
+
+.align_right{
+    text-align:right;
+}
+
+.search_elt{
+    background-color: #eeffcc;
+    //width: 228px;
+    //width: 70%;
+    padding: 1.5px;
+    border: solid 1px #006600;
+    text-align:right;
+    margin:auto;
+}
+
+.field_element{
+  width: 80%;
+  position: relative;
+  left:10%;
+
+}
+
+.text_label{
+  position: relative;
+  left:10%;
+  padding: 5px;
+}
+
+.time_elt{
+  font-size: 9px;
+  color: #7f7f7f;
+  position: relative;
+  bottom: -20px;
+  width: 50%;
+}
+
+.post_title_hr{
+  border: 0px;
+  background-color: #006600;
+  color: #006600;
+  height: 1px;
+}
+
+.login_title_hr{
+  border: 0px;
+  background-color: #006600;
+  color: #006600;
+  height: 1px;
+}

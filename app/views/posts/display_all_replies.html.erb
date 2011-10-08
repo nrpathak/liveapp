@@ -1,0 +1,69 @@
+<% #Obtain user_id from session
+   user_id = session[:user_id]
+   #pass session[:admin_role] as 'true' or 'false' to indicate if user has admin priviledges or not
+   user_role = session[:admin]
+ %>
+
+<table class="post_table">
+<th class="post_table_th" colspan="2">Replies to the Post</th>
+<tr>
+  <td colspan="2">
+     <div class="Post">
+        <b>Post Title:</b> <%= @post_head.post_title%><br />
+        <div class="post_desc">
+        <b>Description:</b><%= @post_head.post_desc  %>
+       <div class="time_elt">
+          Updated at: <%= @post_head.updated_at %>
+          |&nbsp;Posted by: <%= get_user_name(@post_head.creator_id) %>
+        </div>
+        <br>
+
+        </div>
+    </div>
+  </td>
+</tr>
+
+<% @posts.each do |post| %>
+  <% if post.reply_id != nil %>
+  <tr>
+    <td class="vote_elt">
+      <% #Enable votes link if user is not the creator of post %>
+
+         <% if can_vote?(user_id,post.id,post.creator_id)%>
+          <%= link_to "#{post.votes_count}\nVotes",:action => :increment_vote, :id => post.id %>
+         <% else %>
+            <%= post.votes_count %><br />Votes
+         <% end %>
+
+           <br />
+    </td>
+    <td>
+      <div class="post_element">
+
+        <b><%= post.post_title %></b><br />
+        <%= post.post_desc %><br />
+        <%#= post.reply_id %>
+        <div class="time_elt">
+          Updated at: <%= post.updated_at %>
+          |&nbsp;Posted by: <%= get_user_name(post.creator_id) %>
+        </div>
+
+        <div class="align_right">
+          <% if post.creator_id == user_id || user_role == "true" %>
+            <%= link_to 'Edit', edit_post_path(post), :reply_id => post.reply_id %>
+          <% end %>
+
+        </div>
+      </div>
+    </td>
+
+  </tr>
+
+<% end %>
+<% end %>
+  <tr><td><%= link_to 'Back', :action => "index" %></td></tr>
+</table>
+
+
+
+

@@ -1,0 +1,47 @@
+<table class="new_user">
+<th class="new_user_th">Edit User Information</th>
+<tr>
+<td class="new_user_td">
+<% if !@user.nil? && @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% unless @user.blank? %>
+<%= form_tag :action => 'update',:controller => 'users' %>
+<p><label for="user_user_name">Username</label><br>
+<%= text_field  'user', 'user_name', :value=> @user.user_name, :readonly =>'readonly'  %>
+</p>
+
+<p><label for="user_password">Password</label><br>
+<%= text_field 'user', 'password', :value=>@user.password %>
+</p>
+<p><label for="user_first_name">First Name</label><br>
+<%= text_field 'user', 'first_name', :value=>@user.first_name %>
+</p>
+<p><label for="user_last_name">Last Name</label><br>
+<%= text_field 'user', 'last_name', :value=>@user.last_name %>
+</p>
+<p><%= hidden_field 'user', 'admin', :value=>@user.admin %></p>
+<p><%= hidden_field 'user', 'post_count', :value=>@user.post_count%></p>
+
+<p><label for="user_email">Email</label><br>
+<%= email_field 'user', 'email', :value=>@user.email %>
+</p>
+
+<%= submit_tag "Update"%>        <br>
+<%= link_to 'Log Out' ,:action=>'logout'%>
+
+<% else %>
+No user  with such username
+ <% end %>
+
+</td>
+</tr>
+</table>

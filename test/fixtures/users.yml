@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_name: harry123
+  password: harry123
+  first_name: Harry
+  last_name: Potter
+  admin: true
+  post_count: 0
+  email: potter@ncsu.edu
+
+two:
+  user_name: ss
+  password: 1234
+  first_name: ssounda
+  last_name: ss
+  admin: false
+  post_count: 0
+  email: ssounda@ncsu.edu
+
+three:
+   user_name: tommy1
+   password: pass123
+   first_name: tom
+   last_name: jerry
+   admin: false
+   post_count: 0
+   email: tom@jerry.com
+
+

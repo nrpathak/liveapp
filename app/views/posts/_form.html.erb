@@ -1,0 +1,46 @@
+<%= form_for @post do |f| %>
+ <%
+    user_id = session[:user_id]
+    weight = 1440
+    reply_id = @post.reply_id
+
+    #reply_id = nil
+ %>
+
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :post_title, :class => "text_label" %><br />
+    <%= f.text_field :post_title, :class=>"field_element" %>
+  </div>
+  <div class="field">
+    <%= f.label :post_desc, :class => "text_label"%><br />
+    <%= f.text_area :post_desc, :class => "field_element" %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :votes_count, :value => 0 %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :creator_id ,:value=> user_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :weight, :value=> weight %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :reply_id, :value=> reply_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=>"text_label"%>
+  </div>
+<% end %>

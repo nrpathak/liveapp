@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  post_title: post1
+  post_desc: post1 desc
+  votes_count: 0
+  creator_id: 1
+  weight: 1440
+  reply_id: nil
+
+two:
+  post_title: reply1
+  post_desc: reply1 desc
+  votes_count: 0
+  creator_id: 1
+  weight: 1440
+  reply_id: 100

@@ -1,0 +1,25 @@
+<% if !session[:error].nil? %>
+    <div class="error_expl">
+      <h2><%= session[:error] %></h2>
+    </div>
+    <% session[:error]=nil %>
+  <% end %>
+<br />
+<table class="login_table">
+<th class="login_table_th">Login</th>
+<tr>
+<td class="login_element">
+<%= form_tag  :action => 'login' %>
+<p><label for="user_login">Username</label> <%= text_field 'user', 'user_name' %>
+</p>
+
+<p><label for="user_login">Password</label> <%= password_field  'user', 'password' %>
+</p>
+
+<%= submit_tag "Sign In"%>          <br>
+</td>
+</tr>
+</table>
+
+
+

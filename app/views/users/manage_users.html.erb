@@ -1,0 +1,31 @@
+<% if @users.blank? %>
+   <h2 class="heading"> No users in database</h2>
+    <% else %>
+    <h4 class="heading">Users Info</h4>
+    <table class="show_all_table">
+      <tr>
+      <th class="show_all_table_th"> Users Unity ID </th>
+       <th class="show_all_table_th"> User First Name </th>
+        <th class="show_all_table_th"> User Last Name </th>
+        <th class="show_all_table_th"> Post count </th>
+        <th class="show_all_table_th"> Admin </th>
+        <th class="show_all_table_th"> Email  </th>
+        <th class="show_all_table_th">Action</th>
+        </tr>
+<% @users.each do |u| %>
+        <tr>
+          <td class="show_all_table_td"><%= u.user_name %></td>
+          <td class="show_all_table_td"><%= u.first_name %></td>
+          <td class="show_all_table_td"><%= u.last_name %></td>
+          <td class="show_all_table_td"><%= u.post_count %></td>
+          <td class="show_all_table_td"><%= u.admin %></td>
+          <td class="show_all_table_td"><%= u.email %></td>
+          <td class="show_all_table_td"><%= link_to 'Delete',:id=>u.user_name,:action=>'delete_user'%></td>
+
+
+        </tr>
+         <%end%>
+    </table>
+            <% end %>
+
+<h4 class="main-page"><%= link_to 'Admin HomePage', :action=>'list' %></h4>

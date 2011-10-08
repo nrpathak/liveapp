@@ -1,0 +1,37 @@
+<% if @posts.blank? %>
+   <h2 class="heading"> No posts in database</h2>
+    <% else %>
+    <h4 class="heading">Posts Info</h4>
+    <table class="show_all_table">
+      <tr>
+      <th class="show_all_table_th" width="30%"> Post Title </th>
+       <th class="show_all_table_th" width="50%"> Post Description </th>
+        <th class="show_all_table_th" witdh="5%"> Creator ID </th>
+        <th class="show_all_table_th" width="5%"> Votes Count  </th>
+        <th class="show_all_table_th" width="5%"> Weight </th>
+        <th class="show_all_table_th" width="5%"> Post/Reply </th>
+
+
+        </tr>
+<% @posts.each do |p| %>
+        <tr>
+          <td class="show_all_table_td"><%= p.post_title %></td>
+          <td class="show_all_table_td"><%= p.post_desc %></td>
+          <td class="show_all_table_td"><%= User.find(p.creator_id).user_name %></td>
+          <td class="show_all_table_td"><%= p.votes_count %></td>
+          <td class="show_all_table_td"><%= p.weight %></td>
+           <% if p.reply_id.nil? %>
+              <td class="show_all_table_td">Post</td>
+         <% else %>
+              <td class="show_all_table_td">Reply</td>
+
+              <% end %>
+          <!--<td align="center"><%#= link_to 'Delete',:controller => "posts", :action=>'destroy', :id=>p.id %></td>-->
+
+
+        </tr>
+         <%end%>
+    </table>
+            <% end %>
+
+<h4 class="main-page"><%= link_to 'Admin HomePage', :action=>'list' %></h4>

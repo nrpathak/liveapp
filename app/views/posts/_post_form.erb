@@ -1,0 +1,61 @@
+<% #Obtain user_id and admin permission of user from session
+   user_id = session[:user_id]
+   user_role = session[:admin]
+ %>
+
+<table class="post_table">
+<th class="post_table_th" colspan="2">Recent Posts</th>
+<tr><td colspan="2"><%= render :partial => 'search_form' %></td></tr>
+<% @posts.each do |post| %>
+  <% if post.reply_id == nil %>
+  <tr>
+    <td class="vote_elt">
+      <% if can_vote?(user_id,post.id,post.creator_id)%>
+           <%= link_to "#{post.votes_count} Votes",:action => :increment_vote, :id => post.id %>
+      <% else %>
+            <%= post.votes_count  %> Votes
+            <%  %>
+      <% end %>
+
+           <br />
+    </td>
+    <td>
+      <div class="post_element">
+
+        <b><%= post.post_title %></b><br /> <hr class="post_title_hr">
+        <%= post.post_desc %><br />
+
+        <br />
+        <br />
+        <br />
+        <div class="time_elt">
+          Updated at: <%= post.updated_at %>
+          |&nbsp;Posted by: <%= get_user_name(post.creator_id) %>
+        </div>
+        <div class="align_right">
+
+          <%= link_to "#{number_of_replies(post.id)} Replies", :action => :display_all_replies, :id=>post.id %>
+          <% if user_id !=nil %>
+          <%= link_to 'Reply',:action => :reply, :id => post.id %>
+          <% end %>
+          <% if post.creator_id == user_id || user_role == "true" %>
+            <%= link_to 'Edit', edit_post_path(post) %>
+          <% end %>
+
+
+        </div>
+      </div>
+    </td>
+
+  </tr>
+<% end %>
+<% end %>
+  <% if user_id != nil %>
+    <tr><td colspan="2" style="text-align:center"><%= link_to 'New Post', new_post_path %></td></tr>
+  <% end %>
+</table>
+
+
+
+
+

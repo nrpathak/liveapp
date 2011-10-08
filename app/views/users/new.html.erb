@@ -1,0 +1,48 @@
+
+<table class="new_user">
+<th class="new_user_th">New User</th>
+<tr>
+<td class="new_user_td">
+<% if !@user.nil? && @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+
+      </ul>
+    </div>
+  <% end %>
+<%= form_tag :action => 'create' %>
+<p><label for="user_user_name">Username</label><br>
+<%= text_field 'user', 'user_name' %>
+</p>
+
+<p><label for="user_password">Password</label><br>
+<%= password_field 'user', 'password' %>
+</p>
+
+<p><label for="user_first_name">First Name</label><br>
+<%= text_field 'user', 'first_name' %>
+</p>
+<p><label for="user_last_name">Last Name</label><br>
+<%= text_field 'user', 'last_name' %>
+</p>
+<p><% if session[:admin].eql? "true" %>
+      <%= hidden_field 'user', 'admin', :value=>true %>
+   <% else %>
+      <%= hidden_field 'user', 'admin', :value=>false %>
+  <% end %></p>
+<p><%= hidden_field 'user', 'post_count', :value=>0 %></p>
+
+<p><label for="user_email">Email</label><br>
+<%= email_field 'user', 'email' %>
+</p>
+
+<%= submit_tag "Sign Up"%>        <br>
+
+</td>
+</tr>
+</table>
